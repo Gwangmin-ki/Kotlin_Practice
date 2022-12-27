@@ -1,0 +1,35 @@
+//221227 Databinding
+
+package com.example.myapplication2
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import com.example.myapplication2.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+
+    private var mBinding: ActivityMainBinding? = null
+    private val binding get() = mBinding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
+
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+
+
+        binding.button1.setOnClickListener {
+            binding.textview1.setText("코틀린 텍스트뷰 창")
+        }
+    }
+
+    override fun onDestroy() {
+        mBinding = null
+        super.onDestroy()
+    }
+}
